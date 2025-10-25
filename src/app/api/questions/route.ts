@@ -10,8 +10,8 @@ export async function POST(request: Request) {
   const { action, ...data } = await request.json()
 
   if (action === 'create') {
-    const { question, correctAnswer, order } = data
-    const newQuestion = gameStore.addQuestion({ question, correctAnswer, order })
+    const { targetAnswer, order } = data
+    const newQuestion = gameStore.addQuestion({ targetAnswer, order })
     return NextResponse.json(newQuestion)
   }
 
