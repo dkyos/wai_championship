@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen;
+  }
+}
+
+@layer utilities {
+  .glass-effect {
+    @apply bg-white/80 backdrop-blur-lg border border-white/20 shadow-xl;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl;
+  }
+}
