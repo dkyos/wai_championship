@@ -108,8 +108,8 @@ export default function ScoreboardPage() {
         </motion.div>
 
         {/* 실시간 순위 */}
-        <div className="glass-effect rounded-3xl p-8 mb-8">
-          <h2 className="text-3xl font-bold mb-6 text-white">🏆 실시간 순위</h2>
+        <div className="glass-effect-dark rounded-3xl p-8 mb-8">
+          <h2 className="text-3xl font-bold mb-6 text-white drop-shadow-lg">🏆 실시간 순위</h2>
           <div className="space-y-4">
             <AnimatePresence>
               {rankings.map((ranking, index) => (
@@ -185,8 +185,8 @@ export default function ScoreboardPage() {
 
         {/* 최근 답변 및 반응 */}
         {gameStatus === '진행중' && (
-          <div className="glass-effect rounded-3xl p-8">
-            <h2 className="text-3xl font-bold mb-6 text-white">💬 최근 답변</h2>
+          <div className="glass-effect-dark rounded-3xl p-8">
+            <h2 className="text-3xl font-bold mb-6 text-white drop-shadow-lg">💬 최근 답변</h2>
             <div className="space-y-6">
               {questions.slice(0, 5).map((question) => {
                 // 이 질문에 답변한 팀들 찾기
@@ -197,10 +197,10 @@ export default function ScoreboardPage() {
                 if (answeredTeams.length === 0) return null
 
                 return (
-                  <div key={question.id} className="bg-white/10 rounded-2xl p-6">
+                  <div key={question.id} className="bg-white/25 rounded-2xl p-6">
                     <div className="mb-4">
-                      <div className="text-sm text-white/60 mb-1">목표 답변:</div>
-                      <h3 className="text-xl font-bold text-white">
+                      <div className="text-sm text-white/80 mb-1">목표 답변:</div>
+                      <h3 className="text-xl font-bold text-white drop-shadow-md">
                         {question.targetAnswer}
                       </h3>
                     </div>
@@ -212,21 +212,21 @@ export default function ScoreboardPage() {
                         if (!answer) return null
 
                         return (
-                          <div key={team.id} className="bg-white/20 rounded-xl p-4">
+                          <div key={team.id} className="bg-white/35 rounded-xl p-4">
                             <div className="flex justify-between items-start mb-3">
-                              <span className="font-bold text-white">{team.name}</span>
-                              <span className="text-2xl font-bold text-yellow-300">
+                              <span className="font-bold text-white drop-shadow-md">{team.name}</span>
+                              <span className="text-2xl font-bold text-yellow-300 drop-shadow-md">
                                 {answer.score.toFixed(1)}점
                               </span>
                             </div>
                             <div className="space-y-2">
                               <div>
-                                <div className="text-xs text-white/60 mb-1">만든 질문:</div>
+                                <div className="text-xs text-white/80 mb-1">만든 질문:</div>
                                 <p className="text-white font-medium text-sm">{answer.userQuestion}</p>
                               </div>
                               <div>
-                                <div className="text-xs text-white/60 mb-1">WAi 답변:</div>
-                                <p className="text-white/80 text-sm line-clamp-2">{answer.answer}</p>
+                                <div className="text-xs text-white/80 mb-1">WAi 답변:</div>
+                                <p className="text-white text-sm line-clamp-2">{answer.answer}</p>
                               </div>
                             </div>
 
@@ -236,7 +236,7 @@ export default function ScoreboardPage() {
                                 <button
                                   key={type}
                                   onClick={() => handleReaction(question.id, team.id, type)}
-                                  className="px-3 py-2 bg-white/20 hover:bg-white/40 rounded-lg transition-all hover:scale-110 text-2xl"
+                                  className="px-3 py-2 bg-white/30 hover:bg-white/50 rounded-lg transition-all hover:scale-110 text-2xl"
                                   title={type}
                                 >
                                   {REACTION_ICONS[type]}
@@ -250,12 +250,12 @@ export default function ScoreboardPage() {
 
                     {/* 반응 통계 */}
                     {reactionCounts[question.id] && (
-                      <div className="flex gap-4 justify-center pt-4 border-t border-white/20">
+                      <div className="flex gap-4 justify-center pt-4 border-t border-white/30">
                         {(Object.entries(reactionCounts[question.id]) as [ReactionType, number][]).map(([type, count]) => (
                           count > 0 && (
-                            <div key={type} className="flex items-center gap-2 bg-white/20 rounded-full px-4 py-2">
+                            <div key={type} className="flex items-center gap-2 bg-white/35 rounded-full px-4 py-2">
                               <span className="text-2xl">{REACTION_ICONS[type]}</span>
-                              <span className="text-xl font-bold text-white">{count}</span>
+                              <span className="text-xl font-bold text-white drop-shadow-md">{count}</span>
                             </div>
                           )
                         ))}

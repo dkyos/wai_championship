@@ -13,6 +13,10 @@
     @apply bg-white/80 backdrop-blur-lg border border-white/20 shadow-xl;
   }
 
+  .glass-effect-dark {
+    @apply bg-black/30 backdrop-blur-lg border border-white/10 shadow-xl;
+  }
+
   .card-hover {
     @apply transition-all duration-300 hover:scale-105 hover:shadow-2xl;
   }
